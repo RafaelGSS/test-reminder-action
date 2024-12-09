@@ -36,15 +36,15 @@ jobs:
          cat <<EOF > body.json
          {
               "title": "Upcoming Node.js Major Release",
-              "body": "A reminder that the next Node.js **semver major release** is scheduled for **${RELEASE_DATE}**.
-              Therefore, all commits that were landed until **${PR_MAX_DATE}** (one month prior to the release) will be included in the next semver major release.
-              This release follows the usual Node.js schedule:
+              "body": "A reminder that the next Node.js **semver major release** is scheduled for **${RELEASE_DATE}**.\n
+              Therefore, all commits that were landed until **${PR_MAX_DATE}** (one month prior to the release) will be included in the next semver major release.\n
+              This release follows the usual Node.js schedule:\n
 
-              - April (mid-month)
-              - October (mid-month)
+              - April (mid-month)\n
+              - October (mid-month)\n\n
 
-              Please ensure that any necessary preparations are made in advance.
-              For more details on the release process, visit the [Node.js Release Working Group](https://github.com/nodejs/release).
+              Please ensure that any necessary preparations are made in advance.\n
+              For more details on the release process, visit the [Node.js Release Working Group](https://github.com/nodejs/release).\n
 
               cc: @nodejs/collaborators"
          }
