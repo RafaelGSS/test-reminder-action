@@ -23,11 +23,16 @@ jobs:
           # We'll create the reminder issue two months prior the release
           if [[ "$MONTH" == "02" || "$MONTH" == "08" ]] && [[ "$DAY" == "15" ]]; then
             echo "create_issue=true" >> $GITHUB_ENV
+            # curl -L https://github.com/nodejs/Release/raw/HEAD/schedule.json | \
+            # jq -r 'to_entries | map(select(.value.start | strptime("%Y-%m-%d") | mktime > now)) | first | "VERSION=" + .key + "\nRELEASE_DATE=" + .value.start' >> "$GITHUB_ENV"
           else
             echo "create_issue=false" >> $GITHUB_ENV
           fi
           curl -L https://github.com/nodejs/Release/raw/HEAD/schedule.json | \
           jq -r 'to_entries | map(select(.value.start | strptime("%Y-%m-%d") | mktime > now)) | first | "VERSION=" + .key + "\nRELEASE_DATE=" + .value.start' >> "$GITHUB_ENV"
+      - name: Calculate max date for PR
+        # if: env.create_issue == 'true'
+        run: |
           echo "PR_MAX_DATE=$(date -d "$RELEASE_DATE -1 month" +%Y-%m-%d)" >> "$GITHUB_ENV"
       - name: Create release announcement issue
         # if: env.create_issue == 'true'
