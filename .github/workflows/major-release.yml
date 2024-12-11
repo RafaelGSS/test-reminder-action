@@ -37,7 +37,7 @@ jobs:
         # if: env.create_issue == 'true'
         run: |
          gh issue create --repo "${GITHUB_REPOSITORY}" \
-           --title 'Upcoming Node.js Major Release ($VERSION)' \
+           --title "Upcoming Node.js Major Release ($VERSION)" \
            --body-file -<<EOF
             A reminder that the next Node.js **semver major release** is scheduled for **${RELEASE_DATE}**.
             Therefore, all commits that were landed until **${PR_MAX_DATE}** (one month prior to the release) will be included in the next semver major release.
